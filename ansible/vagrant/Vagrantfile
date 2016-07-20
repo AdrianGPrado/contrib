@@ -185,11 +185,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   def vagrant_ansible_provision(ansible, provider)
-    set_common_ansible_options(ansible)
-    # This set up the vagrant hosts before we run the main playbook
-    # Today this just creates /etc/hosts so machines can talk via their
-    # 'internal' IPs instead of the openstack public ip.
-    ansible.playbook = "./vagrant-ansible.yml"
+    # set_common_ansible_options(ansible)
+    # # This set up the vagrant hosts before we run the main playbook
+    # # Today this just creates /etc/hosts so machines can talk via their
+    # # 'internal' IPs instead of the openstack public ip.
+    # ansible.playbook = "./vagrant-ansible.yml"
 
     if provider == :virtualbox
       # On VirtualBox eth0 is used for NAT-ed internet connection,
@@ -283,16 +283,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
           # On CoreOS we use custom Python in Ansible.
           $groups["all_groups:vars"] = ['ansible_python_interpreter="PATH=/opt/bin:$PATH python"']
-        end
-        # PROVISIONING
-        if $ansible_tags.nil?
-          run_ansible_provision n do |ansible, provider|
-            vagrant_ansible_provision(ansible, provider)
-          end
-        end
-
-        run_ansible_provision n do |ansible, provider|
-          cluster_ansible_provision(ansible, provider)
         end
       end
     end
