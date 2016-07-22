@@ -1,7 +1,6 @@
 ---
 - name: Generic | Install Docker
-  action: "{{ ansible_pkg_mgr }}"
-  args:
+  package:
     name: docker
     state: latest
   when: not is_atomic

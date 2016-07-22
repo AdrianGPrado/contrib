@@ -4,7 +4,6 @@
   when: ansible_lsb.codename != "stretch" and ansible_lsb.codename != "sid"
 
 - name: DEBIAN | Install Docker
-  action: "{{ ansible_pkg_mgr }}"
-  args:
+  package:
     name: docker.io
     state: latest

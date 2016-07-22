@@ -1,8 +1,7 @@
 - name: Install kubernetes runtime dependencies
-  action: "{{ ansible_pkg_mgr }}"
-  args:
-        name: "{{ item }}"
-        state: latest
+  package:
+    name: "{{ item }}"
+    state: latest
   with_items:
   - socat
   - tar

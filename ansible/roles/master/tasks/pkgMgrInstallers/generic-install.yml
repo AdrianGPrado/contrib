@@ -1,13 +1,11 @@
 - name: Generic | Install kubernetes master
-  action: "{{ ansible_pkg_mgr }}"
-  args:
+  pacakge:
     name: kubernetes-master
     state: latest
   notify:
     - restart daemons
 - name: Generic | Install kubernetes node
-  action: "{{ ansible_pkg_mgr }}"
-  args:
+  package:
     name: kubernetes-node
     state: latest
   notify:

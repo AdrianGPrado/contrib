@@ -19,20 +19,17 @@
   copy: src=contrail-vrouter-agent.manifest dest={{ kube_manifest_dir }}
 
 - name: Ensure python pip is installed
-  action: "{{ ansible_pkg_mgr }}"
-  args:
+  pacakge:
     name: python-pip
     state: latest
 
 - name: bridge-utils
-  action: "{{ ansible_pkg_mgr }}"
-  args:
+  pacakge:
     name: bridge-utils
     state: latest
 
 - name: ethtool
-  action: "{{ ansible_pkg_mgr }}"
-  args:
+  pacakge:
     name: ethtool
     state: latest
 

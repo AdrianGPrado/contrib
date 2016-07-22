@@ -1,6 +1,5 @@
 - name: Fedora | Install kubernetes node
-  action: "{{ ansible_pkg_mgr }}"
-  args:
+  pacakge:
     name: kubernetes-node
     state: latest
     enablerepo: "updates-testing"
